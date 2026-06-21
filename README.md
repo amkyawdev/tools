@@ -14,7 +14,6 @@ AI Brain Skills provides a structured, hierarchical knowledge base that AI agent
 - **CLI Tool** - Interactive command-line interface
 - **VS Code Extension** - IDE integration
 - **Dashboard** - Analytics and metrics visualization
-- **AI Generator** - Auto-generate skills with AI
 
 ## 📁 Structure
 
@@ -29,8 +28,7 @@ ai-brain-skills/
 ├── packages/
 │   ├── cli/                   # CLI Tool (@amkyaw/cli)
 │   ├── vscode-extension/      # VS Code Extension
-│   ├── dashboard/             # Analytics Dashboard
-│   └── ai-generator/           # AI Skill Generator
+│   └── dashboard/             # Analytics Dashboard
 ├── hooks/                      # Execution hooks
 ├── shared/                     # Shared resources
 ├── tests/                      # Test framework
@@ -70,12 +68,12 @@ npm install -g @amkyaw/cli
 
 # Commands
 amkyaw skill:list              # List all skills
-amkyaw skill:search <query>     # Search skills
+amkyaw skill:search <query>    # Search skills
 amkyaw skill:explore           # Interactive explorer
-amkyaw skill:compare <s1> <s2>  # Compare two skills
-amkyaw skill:create <name>      # Create new skill
-amkyaw validate                 # Validate all skills
-amkyaw build                    # Build for deployment
+amkyaw skill:compare <s1> <s2> # Compare two skills
+amkyaw skill:create <name>     # Create new skill
+amkyaw validate                # Validate all skills
+amkyaw build                  # Build for deployment
 ```
 
 ## 🔌 VS Code Extension
@@ -100,21 +98,6 @@ Analytics dashboard with:
 cd packages/dashboard
 npm install
 npm run dev
-```
-
-## 🤖 AI Generator
-
-Auto-generate skills using AI:
-
-```bash
-# Set API key
-export OPENAI_API_KEY=your_key
-
-# Generate skill
-npx amkyaw-ai generate my-skill backend
-
-# Analyze codebase
-npx amkyaw-ai analyze ./src
 ```
 
 ## 📖 Documentation
