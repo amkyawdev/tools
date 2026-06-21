@@ -120,7 +120,9 @@ npm run dev
 - Backend (Python, Node.js, Go, Rust)
 - Database (SQL, MongoDB, Redis, ORMs)
 - DevOps (Docker, Kubernetes, CI/CD)
-- Testing, Security, AI/ML, and more...
+- Testing, Security
+- AI/ML (LLMs, Fine-tuning, Inference)
+  - [amk-coder-v2](https://huggingface.co/amkyawdev/amk-coder-v2) - Myanmar Coding Assistant
 
 ### Custom (04-custom)
 - Company Patterns
