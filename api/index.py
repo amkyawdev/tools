@@ -1,19 +1,18 @@
-"""Vercel Serverless entrypoint for AmkyawDev Tools FastAPI backend."""
+"""Vercel Serverless entrypoint — ASGI adapter for FastAPI backend."""
 
 import json
 import asyncio
 import sys
-from os import environ
 from pathlib import Path
 
-_root = Path(__file__).resolve().parent.parent
-if str(_root) not in sys.path:
-    sys.path.insert(0, str(_root))
+_backend_root = Path(__file__).resolve().parent.parent / "backend"
+if str(_backend_root) not in sys.path:
+    sys.path.insert(0, str(_backend_root))
 
 from app.main import app
 
 
-async def handler(event: dict, _context):
+async def handler(event: dict, _context: dict):
     body = event.get("body", "") or ""
     if event.get("isBase64Encoded", False):
         import base64
@@ -23,7 +22,7 @@ async def handler(event: dict, _context):
     raw_query = event.get("rawQuery", "")
     headers_in = event.get("headers", {}) or {}
 
-    scope = {
+    scope: dict = {
         "type": "http",
         "asgi": {"version": "3.0"},
         "method": http_method,

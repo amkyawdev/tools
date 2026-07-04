@@ -1,8 +1,8 @@
 {
-  "buildCommand": "pip install -r requirements.txt",
-  "outputDirectory": ".",
+  "buildCommand": "cd backend && pip install -r requirements.txt",
+  "outputDirectory": "backend",
   "framework": null,
-  "installCommand": "pip install -r requirements.txt",
+  "installCommand": "cd backend && pip install -r requirements.txt",
   "rewrites": [
     {
       "source": "/(.*)",
@@ -29,19 +29,5 @@
       "maxDuration": 60,
       "runtime": "python3.12"
     }
-  },
-  "env": {
-    "OPENROUTER_API_KEY": "@openrouter-api-key",
-    "QDRANT_URL": "@qdrant-url",
-    "QDRANT_API_KEY": "@qdrant-api-key",
-    "QDRANT_COLLECTION_NAME": "amkyawdev-tools",
-    "NEON_DATABASE_URL": "@neon-database-url",
-    "ELEVENLABS_API_KEY": "@elevenlabs-api-key",
-    "NVIDIA_API_KEY": "@nvidia-api-key",
-    "TELEGRAM_BOT_TOKEN": "@telegram-bot-token",
-    "TELEGRAM_WEBHOOK_SECRET": "@telegram-webhook-secret",
-    "API_SECRET_KEY": "@api-secret-key",
-    "DEBUG": "false",
-    "CORS_ORIGINS": "*"
   }
 }
