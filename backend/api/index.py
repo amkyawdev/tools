@@ -1,3 +1,10 @@
-import sys,os
-sys.path.insert(0,os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from app.main import app
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+app=FastAPI(title="AmkyawDev Tools",version="1.0.0")
+app.add_middleware(CORSMiddleware,allow_origins=["*"],allow_credentials=True,allow_methods=["*"],allow_headers=["*"])
+@app.get("/health")
+async def health_check():
+    return{"status":"healthy","service":"amkyawdev-tools"}
+@app.get("/")
+async def root():
+    return{"message":"AmkyawDev Tools API"}
