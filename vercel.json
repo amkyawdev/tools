@@ -1,0 +1,1 @@
+{"buildCommand":"cd frontend && npm install && npm run build","outputDirectory":"frontend/out","installCommand":"cd frontend && npm install","framework":"nextjs","headers":[{"source":"/(.*)","headers":[{"key":"Access-Control-Allow-Origin","value":"*"}]}]}
