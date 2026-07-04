@@ -8,13 +8,11 @@ async def health_check():
 @app.get("/")
 async def root():
     return{"message":"AmkyawDev Tools API","docs":"/docs"}
-@app.on_event("startup")
-async def startup():
-    try:
-        from app.api.routes.agent import router as agent_router
-        app.include_router(agent_router,prefix="/api/agent",tags=["Agent"])
-    except ImportError:pass
-    try:
-        from app.api.routes.knowledge import router as knowledge_router
-        app.include_router(knowledge_router,prefix="/api/knowledge",tags=["Knowledge"])
-    except ImportError:pass
+try:
+    from app.api.routes.agent import router as agent_router
+    app.include_router(agent_router,prefix="/api/agent",tags=["Agent"])
+except ImportError:pass
+try:
+    from app.api.routes.knowledge import router as knowledge_router
+    app.include_router(knowledge_router,prefix="/api/knowledge",tags=["Knowledge"])
+except ImportError:pass
