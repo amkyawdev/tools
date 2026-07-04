@@ -8,7 +8,7 @@ const api = axios.create({
   headers: { "Content-Type": "application/json" },
 });
 
-export async function sendChatMessage(data: { messages: any[]; skills?: string[]; model?: string }) {
+export async function sendChatMessage(data: { messages: { role: string; content: string }[]; skills?: string[]; model?: string }) {
   const response = await api.post("/api/agent/chat", data);
   return response.data;
 }
@@ -28,7 +28,7 @@ export async function searchKnowledge(query: string, skill?: string, limit = 10)
   return response.data;
 }
 
-export async function upsertKnowledge(data: { id: string; content: string; metadata?: any; skill?: string }) {
+export async function upsertKnowledge(data: { id: string; content: string; metadata?: Record<string, any>; skill?: string }) {
   const response = await api.post("/api/knowledge/upsert", data);
   return response.data;
 }

@@ -10,15 +10,10 @@ class WebSocketClient {
   connect() {
     if (this.ws?.readyState === WebSocket.OPEN) return;
     this.ws = new WebSocket(WS_URL);
-    this.ws.onopen = () => { this.emit("connected", {}); };
-    this.ws.onmessage = (event) => {
-      try {
-        const data = JSON.parse(event.data);
-        this.emit("message", data);
-        if (data.type) this.emit(data.type, data);
-      } catch (e) {}
-    };
-    this.ws.onclose = () => { this.emit("disconnected", {}); this.scheduleReconnect(); };
+    this.ws.onopen = () => { console.log("WebSocket connected"); this.emit("connected", {}); };
+    this.ws.onmessage = (event) => { try { const data = JSON.parse(event.data); this.emit("message", data); if (data.type) this.emit(data.type, data); } catch (e) { console.error("WebSocket parse error:", e); } };
+    this.ws.onclose = () => { console.log("WebSocket disconnected"); this.emit("disconnected", {}); this.scheduleReconnect(); };
+    this.ws.onerror = (error) => { console.error("WebSocket error:", error); };
   }
 
   private scheduleReconnect() {
