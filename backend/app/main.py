@@ -1,5 +1,7 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
+import os
 
 app = FastAPI(
     title="AmkyawDev Tools",
@@ -7,13 +9,27 @@ app = FastAPI(
     version="1.0.0"
 )
 
+# Secure CORS Configuration
+ALLOWED_ORIGINS = os.getenv(
+    "ALLOWED_ORIGINS", 
+    "https://amkyawdev-tools.vercel.app,https://amkyawdev-tools-git-*.vercel.app,http://localhost:3000"
+).split(",")
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=ALLOWED_ORIGINS,
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"]
+    allow_methods=["GET", "POST", "PUT", "DELETE"],
+    allow_headers=["Authorization", "Content-Type", "X-Requested-With"],
 )
+
+@app.exception_handler(Exception)
+async def global_exception_handler(request: Request, exc: Exception):
+    """Global error handler - never expose internal details"""
+    return JSONResponse(
+        status_code=500,
+        content={"error": "Internal server error", "detail": "An unexpected error occurred"}
+    )
 
 @app.get("/health")
 async def health_check():
@@ -27,7 +43,7 @@ async def root():
 try:
     from app.api.routes.agent import router as agent_router
     app.include_router(agent_router, prefix="/api/agent", tags=["Agent"])
-except ImportError:
+except ImportError as e:
     pass
 
 try:
