@@ -9,13 +9,14 @@
   * { border-color: theme('colors.slate.800'); }
   
   body {
-    @apply bg-[#0a0a0f] text-slate-100 antialiased;
+    @apply antialiased;
     font-family: 'DM Sans', system-ui, sans-serif;
     background: 
       radial-gradient(ellipse 80% 50% at 50% -20%, rgba(120, 119, 198, 0.15), transparent),
       radial-gradient(ellipse 60% 40% at 100% 0%, rgba(99, 102, 241, 0.1), transparent),
-      #0a0a0f;
+      linear-gradient(180deg, #0a0a0f 0%, #0d0d14 50%, #0a0a0f 100%);
     min-height: 100vh;
+    color: white;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -50,14 +51,14 @@
 
   /* Sidebar Links */
   .sidebar-link {
-    @apply flex items-center gap-3 px-4 py-3 rounded-2xl text-slate-400 transition-all duration-300 text-sm font-medium relative overflow-hidden;
+    @apply flex items-center gap-3 px-4 py-3 rounded-2xl text-white/60 transition-all duration-300 text-sm font-medium relative overflow-hidden;
   }
   .sidebar-link::before {
     content: '';
     @apply absolute inset-0 bg-gradient-to-r from-violet-500/10 to-indigo-500/10 opacity-0 transition-opacity duration-300;
   }
   .sidebar-link:hover {
-    @apply text-slate-200;
+    @apply text-white;
   }
   .sidebar-link:hover::before {
     @apply opacity-100;
@@ -69,12 +70,12 @@
 
   /* Chat Bubbles */
   .chat-bubble-user {
-    @apply bg-gradient-to-br from-violet-600/30 to-indigo-600/30 border border-violet-500/40 text-slate-100 rounded-3xl rounded-br-md px-6 py-4 max-w-[85%] self-end;
+    @apply bg-gradient-to-br from-violet-600/30 to-indigo-600/30 border border-violet-500/40 text-white rounded-3xl rounded-br-md px-6 py-4 max-w-[85%] self-end;
     box-shadow: 0 4px 20px rgba(99, 102, 241, 0.2);
   }
 
   .chat-bubble-assistant {
-    @apply bg-white/[0.03] border border-white/[0.08] text-slate-200 rounded-3xl rounded-bl-md px-6 py-4 max-w-[85%] self-start;
+    @apply bg-white/[0.03] border border-white/[0.08] text-white rounded-3xl rounded-bl-md px-6 py-4 max-w-[85%] self-start;
     backdrop-filter: blur(12px);
   }
 
@@ -160,12 +161,13 @@
 
 /* Scrollbar */
 ::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { @apply bg-transparent; }
+::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { 
-  @apply bg-slate-700/50 rounded-full;
+  background: rgba(99, 102, 241, 0.3);
+  border-radius: 999px;
   border: 2px solid transparent;
 }
-::-webkit-scrollbar-thumb:hover { @apply bg-slate-600/70; }
+::-webkit-scrollbar-thumb:hover { background: rgba(99, 102, 241, 0.5); }
 
 /* Selection */
 ::selection {
