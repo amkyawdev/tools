@@ -33,20 +33,20 @@
 @layer components {
   /* Glass Effect */
   .glass {
-    @apply bg-white/[0.03] backdrop-blur-2xl border border-white/[0.05];
+    @apply bg-[#12121a]/80 backdrop-blur-2xl border border-white/[0.08];
     box-shadow: 
-      0 8px 32px rgba(0, 0, 0, 0.4),
-      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      0 8px 32px rgba(0, 0, 0, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
   }
 
   .glass-hover {
     @apply transition-all duration-300;
   }
   .glass-hover:hover {
-    @apply bg-white/[0.05] border-white/[0.1];
+    @apply bg-[#1a1a25]/80 border-white/[0.15];
     box-shadow: 
-      0 12px 40px rgba(0, 0, 0, 0.5),
-      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      0 12px 40px rgba(0, 0, 0, 0.6),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
   }
 
   /* Sidebar Links */
@@ -70,13 +70,13 @@
 
   /* Chat Bubbles */
   .chat-bubble-user {
-    @apply bg-gradient-to-br from-violet-600/30 to-indigo-600/30 border border-violet-500/40 text-white rounded-3xl rounded-br-md px-6 py-4 max-w-[85%] self-end;
-    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.2);
+    @apply bg-gradient-to-br from-violet-600/40 to-indigo-600/40 border border-violet-500/50 text-white rounded-3xl rounded-br-md px-6 py-4 max-w-[85%] self-end;
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
   }
 
   .chat-bubble-assistant {
-    @apply bg-white/[0.03] border border-white/[0.08] text-white rounded-3xl rounded-bl-md px-6 py-4 max-w-[85%] self-start;
-    backdrop-filter: blur(12px);
+    @apply bg-[#12121a] border border-white/[0.1] text-white rounded-3xl rounded-bl-md px-6 py-4 max-w-[85%] self-start;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   }
 
   /* Buttons */
@@ -106,20 +106,21 @@
 
   /* Input Fields */
   .input-field {
-    @apply w-full px-5 py-4 bg-white/[0.02] border border-white/[0.08] rounded-2xl text-slate-200 placeholder:text-slate-600 focus:outline-none transition-all duration-300;
+    @apply w-full px-5 py-4 bg-[#0a0a0f] border border-white/[0.15] rounded-2xl text-white placeholder:text-slate-500 focus:outline-none transition-all duration-300;
   }
   .input-field:focus {
-    @apply border-violet-500/50 bg-white/[0.04];
+    @apply border-violet-500/50 bg-[#0d0d15];
     box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
   }
 
   /* Cards */
   .card {
-    @apply bg-white/[0.02] border border-white/[0.05] rounded-3xl p-6 transition-all duration-300;
+    @apply bg-[#12121a]/60 border border-white/[0.08] rounded-3xl p-6 transition-all duration-300;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   }
   .card:hover {
-    @apply bg-white/[0.04] border-white/[0.1];
-    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+    @apply bg-[#1a1a25]/80 border-white/[0.15];
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
   }
 }
 
@@ -181,14 +182,14 @@
 
 /* Code Blocks */
 pre {
-  @apply rounded-2xl bg-[#0d0d12] p-5 my-4 overflow-x-auto border border-white/[0.05];
+  @apply rounded-2xl bg-[#0a0a0f] p-5 my-4 overflow-x-auto border border-white/[0.1];
   box-shadow: 
-    inset 0 1px 0 rgba(255, 255, 255, 0.03),
-    0 4px 20px rgba(0, 0, 0, 0.3);
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 code {
-  @apply text-sm font-mono;
+  @apply text-sm font-mono text-white/90;
 }
 
 /* Gradient Text */
