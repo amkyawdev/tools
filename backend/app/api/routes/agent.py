@@ -11,7 +11,7 @@ async def chat(request:ChatRequest,openrouter=Depends(get_openrouter),skill_load
     try:
         agent=CoderAgent(openrouter_service=openrouter,skill_loader=skill_loader)
         response=await agent.chat(messages=[m.model_dump() for m in request.messages],skills=request.skills,model=request.model)
-        return ChatResponse(message=response["message"],skills_used=response.get("skills_used",[]),tokens_used=response.get("tokens_used",0))
+        return ChatResponse(message=response)
     except Exception as e:
         logger.error(f"Chat error: {e}")
         raise HTTPException(status_code=500,detail=str(e))
@@ -20,7 +20,7 @@ async def generate_code(request:CodeGenerationRequest,openrouter=Depends(get_ope
     try:
         agent=CoderAgent(openrouter_service=openrouter,skill_loader=skill_loader)
         result=await agent.generate_code(prompt=request.prompt,language=request.language,skills=request.skills,context=request.context)
-        return CodeGenerationResponse(code=result["code"],language=result.get("language",request.language),explanation=result.get("explanation",""),file_path=result.get("file_path"))
+        return CodeGenerationResponse(code=result,language=request.language)
     except Exception as e:
         logger.error(f"Code generation error: {e}")
         raise HTTPException(status_code=500,detail=str(e))
