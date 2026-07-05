@@ -3,7 +3,21 @@ from typing import Optional
 from openai import AsyncOpenAI
 from app.utils.logger import setup_logger
 logger=setup_logger(__name__)
-NIM_MODELS={"chat":["nvidia/nemotron-3-nano-30b-a3b","nvidia/nemotron-mini-4b-instruct","meta/llama-3.2-3b-instruct"],"code":["mistralai/codestral-22b-instruct-v0.1","deepseek-ai/deepseek-coder-6.7b-instruct","bigcode/starcoder2-15b"]}
+
+# NVIDIA NIM Models (Working ✅)
+NIM_MODELS={
+    "chat": [
+        "nvidia/nemotron-3-nano-30b-a3b",      # ✅ Nano Chat
+        "nvidia/nemotron-mini-4b-instruct",     # ✅ Mini Chat
+        "meta/llama-3.2-3b-instruct",          # ✅ Llama Chat
+    ],
+    "code": [
+        "mistralai/codestral-22b-instruct-v0.1",  # ✅ Coder ⭐
+        "deepseek-ai/deepseek-coder-6.7b-instruct", # ✅ DeepSeek Coder
+        "bigcode/starcoder2-15b",                 # ✅ StarCoder
+    ]
+}
+
 class NvidiaService:
     def __init__(self):
         self.api_key=os.getenv("NVIDIA_API_KEY","")
